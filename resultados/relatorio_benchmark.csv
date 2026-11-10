@@ -1,0 +1,11 @@
+id,prompt,base_valido,base_tempo_s,pda_valido,pda_tempo_s
+1,Gere um JSON com nome e idade de uma pessoa.,False,8.31,True,11.83
+2,"Gere um JSON representando um produto com nome, preco (numero) e disponivel (booleano).",False,12.01,True,36.57
+3,Gere um JSON com uma lista de 3 cidades (strings).,False,12.84,True,41.98
+4,"Gere um JSON de uma configuracao de sistema contendo host, porta (numero), debug (booleano) e banco (null).",False,13.58,True,16.58
+5,"Gere um JSON com a ficha de um livro contendo titulo, autor e um array de capitulos.",False,12.98,False,56.1
+6,"Gere um JSON com o carrinho de compras contendo um array de itens, onde cada item tem produto e quantidade.",False,12.71,True,81.01
+7,"Gere um JSON com o resultado de um exame contendo paciente, aprovado (true/false) e notas (array de numeros).",False,13.43,True,36.83
+8,"Gere um JSON contendo uma lista de tarefas com id, descricao e concluida.",False,12.66,True,47.06
+9,"Gere um JSON de um pedido contendo id_pedido, cliente e endereco aninhado (rua, numero, cep).",False,12.9,True,44.78
+10,"Gere um JSON com estatisticas de servidor contendo cpu_usage, memory_free e status_ok.",False,13.02,True,14.64
