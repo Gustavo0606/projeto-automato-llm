@@ -21,6 +21,16 @@ class AutomatoJSONPilha:
         self.escape = False
         self.valido = True
 
+    def clone(self):
+        """Cria uma cópia leve e rápida do autômato para simulação de tokens."""
+        novo = AutomatoJSONPilha()
+        novo.pilha = self.pilha.copy()
+        novo.estado_atual = self.estado_atual
+        novo.em_string = self.em_string
+        novo.escape = self.escape
+        novo.valido = self.valido
+        return novo
+
     def processar_caractere(self, char: str) -> bool:
         """
         Lê um caractere e executa a transição de estado e pilha.
@@ -45,7 +55,6 @@ class AutomatoJSONPilha:
                 return True
             return True 
 
-
         if char in (' ', '\n', '\t', '\r'):
             return True
 
@@ -60,6 +69,9 @@ class AutomatoJSONPilha:
                 return True
             return False
 
+        elif self.estado_atual == "FINALIZADO":
+            return False
+
         elif self.estado_atual == "ESPERANDO_CHAVE":
             if char == '"':
                 self.em_string = True
@@ -67,7 +79,10 @@ class AutomatoJSONPilha:
                 return True
             elif char == '}' and self.pilha and self.pilha[-1] == '}':
                 self.pilha.pop()
-                self.estado_atual = "DEPOIS_VALOR"
+                if len(self.pilha) == 0:
+                    self.estado_atual = "FINALIZADO"
+                else:
+                    self.estado_atual = "DEPOIS_VALOR"
                 return True
             return False
 
@@ -97,7 +112,10 @@ class AutomatoJSONPilha:
                 return True
             elif char == ']' and self.pilha and self.pilha[-1] == ']':
                 self.pilha.pop()
-                self.estado_atual = "DEPOIS_VALOR"
+                if len(self.pilha) == 0:
+                    self.estado_atual = "FINALIZADO"
+                else:
+                    self.estado_atual = "DEPOIS_VALOR"
                 return True
             return False
 
@@ -125,6 +143,10 @@ class AutomatoJSONPilha:
                     self.valido = False
                     return False
                 self.pilha.pop()
+                if len(self.pilha) == 0:
+                    self.estado_atual = "FINALIZADO"
+                else:
+                    self.estado_atual = "DEPOIS_VALOR"
                 return True
             return False
 
@@ -138,5 +160,5 @@ class AutomatoJSONPilha:
         return self.valido
 
     def esta_em_estado_final(self) -> bool:
-        """O JSON só é válido se a pilha estiver vazia no final e fora de strings."""
-        return len(self.pilha) == 0 and self.valido and not self.em_string
+        """O JSON só é aceito se estiver no estado FINALIZADO ou com pilha vazia fora de strings."""
+        return (len(self.pilha) == 0 or self.estado_atual == "FINALIZADO") and self.valido and not self.em_string
