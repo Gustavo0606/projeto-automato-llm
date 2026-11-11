@@ -1,0 +1,11 @@
+id,prompt,base_ingenuo_valido,base_ingenuo_tempo_s,base_refinado_valido,base_refinado_tempo_s,pda_valido,pda_tempo_s
+1,Gere um JSON com nome e idade de uma pessoa.,False,7.91,False,2.43,True,7.88
+2,"Gere um JSON representando um produto com nome, preco (numero) e disponivel (booleano).",False,13.42,False,3.7,True,39.05
+3,Gere um JSON com uma lista de 3 cidades (strings).,False,20.65,False,2.79,True,31.11
+4,"Gere um JSON de uma configuracao de sistema contendo host, porta (numero), debug (booleano) e banco (null).",False,18.24,False,3.97,True,15.5
+5,"Gere um JSON com a ficha de um livro contendo titulo, autor e um array de capitulos.",False,20.74,False,10.34,True,73.65
+6,"Gere um JSON com o carrinho de compras contendo um array de itens, onde cada item tem produto e quantidade.",False,20.59,False,6.19,True,28.99
+7,"Gere um JSON com o resultado de um exame contendo paciente, aprovado (true/false) e notas (array de numeros).",False,20.65,False,8.73,True,56.95
+8,"Gere um JSON contendo uma lista de tarefas com id, descricao e concluida.",False,21.11,False,7.49,True,43.36
+9,"Gere um JSON de um pedido contendo id_pedido, cliente e endereco aninhado (rua, numero, cep).",False,16.93,False,10.06,True,44.17
+10,"Gere um JSON com estatisticas de servidor contendo cpu_usage, memory_free e status_ok.",False,20.24,False,6.51,True,11.83
